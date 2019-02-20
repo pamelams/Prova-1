@@ -1,0 +1,33 @@
+->Sistema de Gerenciamento de Projetos
+
+*Funcionalidades:
+-Adição/remoção de informações referentes aos projetos e atividades.
+-Alteração do status: i) “Em processo de criação” para “Iniciado”. O coordenador deve poder iniciar uma criação apenas se constarem todas as informações básicas. ii) “Iniciado” para “Em andamento”. O coordenador deve poder confirmar a alocação. iii) “Em andamento” para “Concluído”. O coordenador deve poder alterar o status para “Concluído”, se existir a descrição do projeto e atividades.
+-O sistema oferece as seguintes consultas: i) Consulta por usuário; ii) Consulta por projeto; iii) Consulta por atividade;
+-O sistema fornece um relatório de projeto e atividades da unidade acadêmica.
+
+*Classes:
+-Main: Inicia o sistema. Com essa classe é possível entrar no sistema ou fazer consultas nele mesmo sem estar logado.
+-Usuario: Cada usuário será tratado como um objeto, que terá um tipo, nome, identidade, atividades as quais é responsável e projetos que coordena.
+-Coordenador: Herda da classe Usuario. Possui os métodos que só poderão ser utilizados pelo coordenador do projeto.
+-Projeto: Cada projeto é tratado como um objeto, que terá um status(“Em processo de criação”, “Iniciado”, “Em andamento” ou “Concluído”), uma identificação, data de início, data de término, um coordenador, profissionais envolvidos, atividades e um relatório fornecido pelo coordenador do projeto.
+-Atividade: Cada atividade é tratada como um objeto, que terá uma identificação, uma descrição, data de início, data de término, um responsável pela atividade, profissionais participantes e um relatório fornacido pelo responsável da atividade.
+
+*Distribuição dos Métodos:
+-novoUsuario: Permite que uma pessoa seja cadastrada no sistema. Está na classe Main, pois o usuário não está logado no sistema.
+-login: Permite que o usuário faça login no sistema. Está na classe Main porque o usuário ainda não está logado no sistema.
+-consultarUsuario: Busca um usuário no sistema. Está na classe Main, pois o usuário não precisa estar logado no sistema.
+-consultarProjeto: Busca um projeto no sistema. Está na classe Main, pois o usuário não precisa estar logado no sistema.
+-consultarAtividade: Busca uma atividade no sistema. Está na classe Main, pois o usuário não precisa estar logado no sistema.
+-editarAtividade: Permite que o responsável por uma atividade edite as informações dela. Está na Classe Usuario, pois o usuário só poderá editar as informações das atividades das quais é responsável.
+-criarAtividade: Permite que o coordenador do projeto crie uma nova atividade. Está na classe Coordenador, pois apenas o coordenador do projeto poderá criar uma nova atividade.
+-criarProjeto: Cria um novo projeto. Está na classe Usuario, pois o coordenador do projeto será um usuário do sistema.
+-verificarTipo: Verifica o tipo de usuário (aluno de graduação, mestrado e doutorado, professor, pesquisador, profissional (desenvolvedor, testador e analista) ou técnico). Está na classe Usuario, pois é necessário verificar se o usuário é um professor ou pesquisador para que possa criar um projeto.
+-verificarInformacao: Verifica se uma informação do projeto foi informada. Está na classe Coordenador, pois é utilizado no momento que o coordenador tenta alterar o status do projeto.
+-addParticipante: Permite que o coordenador do projeto adicione um participante a um projeto ou atividade.
+-iniciarProjeto: Inicia um projeto criado. Está na classe coordenador, pois apenas o coordenador do projeto pode iniciá-lo.
+-concluirProjeto: Conclui um projeto iniciado. Está na classe coordenador, pois apenas o coordenador do projeto pode concluí-lo.
+-editarProjeto: Permite que o coordenador do projeto edite as informações dele. Está na classe Coordenador, pois apenas o coordenador do projeto pode editar as informações do projeto.
+
+*Herança
+-A classe Coordenador herda da classe Usuario, pois todo coordenador é um usuário do sistema.
